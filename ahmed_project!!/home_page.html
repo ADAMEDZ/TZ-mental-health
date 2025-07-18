@@ -1,0 +1,146 @@
+<!-- ADeM GH-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+        <title>TZ team - الصحة النفسية للطلاب</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/2.jpg" alt="logo" height="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="home_page.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/test.html">اختبار الصحة النفسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/resources.html">المصادر</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/story.html">قصص الطلاب</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="text-center py-4">
+            <img src="assets/2.jpg" alt="logo" class="logo-img">
+            <h1 class="mt-3 welcome-title">حملة الصحة النفسية للطلاب</h1>
+        </header>
+           <h1 class="text-center welcome-title">Welcome to the TZ team page</h1>
+        <section class="container text-center my-5">
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-4 text-start image-container">
+                    <img src="assets/1.jpg" alt="مزه" class="img-fluid rounded shadow float-start" >
+                </div>
+                <div class="col-6 col-md-4 text-end image-container">
+                    <img src="assets/3.jpg" alt="محجبة = مش مزة !!" class="img-fluid rounded shadow float-end" >
+                </div>
+            </div>
+        </section>
+     <section class="container my-5">
+    <h2 class="text-center mb-4 section-title">📊 إحصائيات عن الصحة النفسية</h2>
+    <div class="row text-center g-4 justify-content-center">
+      <div class="col-md-4 col-sm-6">
+        <div class="stats-card stats-danger">
+          <div class="stats-icon">📈</div>
+          <h3 class="stats-number text-danger display-4 fw-bold">75%</h3>
+          <p class="stats-text">من الطلاب يعانون من التوتر أثناء الامتحانات</p>
+          <div class="stats-footer">
+            <small class="text-muted">المصدر: دراسة جامعية 2025</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="stats-card stats-warning">
+          <div class="stats-icon">🤝</div>
+          <h3 class="stats-number text-warning display-4 fw-bold">60%</h3>
+          <p class="stats-text">يشعرون بالوحدة في فترة الدراسة</p>
+          <div class="stats-footer">
+            <small class="text-muted">استطلاع طلابي حديث</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="stats-card stats-primary">
+          <div class="stats-icon">💭</div>
+          <h3 class="stats-number text-primary display-4 fw-bold">1 من 4</h3>
+          <p class="stats-text">يعاني من أعراض القلق الشديد</p>
+          <div class="stats-footer">
+            <small class="text-muted">إحصائيات العيادة الجامعية</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+    <section class="text-center my-4">
+    <a href="test.html" class="btn btn-success btn-lg px-5">اختبر صحتك النفسية الآن</a>
+    </section>
+    <section class="container my-5">
+    <h2 class="text-center mb-3">💡 نصائح سريعة</h2>
+    <ul class="list-group" id="tip-list">
+      <li class="list-group-item">خذ 5 دقائق استراحة كل ساعة دراسة</li>
+      <li class="list-group-item">مارس تمارين التنفس قبل النوم</li>
+      <li class="list-group-item">رتّب أولوياتك ولا تجهد نفسك</li>
+    </ul>
+  </section>
+  <script src="js(hell)/scroll.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fallback JavaScript in case external file fails to load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tips rotation
+        const tips = document.getElementById("tip-list");
+        if (tips) {
+            setInterval(() => {
+                const first = tips.firstElementChild;
+                if (first) {
+                    first.style.opacity = '0';
+                    setTimeout(() => {
+                        tips.appendChild(first);
+                        first.style.opacity = '1';
+                    }, 300);
+                }
+            }, 4000);
+        }
+
+        // Add hover effects to stats cards
+        document.querySelectorAll('.stats-card').forEach(card => {
+            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 8px 20px rgba(0,0,0,0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = 'none';
+            });
+        });
+
+        // Add hover effects to images
+        document.querySelectorAll('.image-container img').forEach(img => {
+            img.style.transition = 'transform 0.3s ease';
+            img.addEventListener('mouseenter', () => {
+                img.style.transform = 'scale(1.05)';
+            });
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1)';
+            });
+        });
+    });
+  </script>
+    </body>
+</html>

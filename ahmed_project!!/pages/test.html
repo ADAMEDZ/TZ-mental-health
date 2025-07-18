@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>اختبار الصحة النفسية</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .question-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .question-card:hover {
+      transform: translateY(-5px);
+    }
+    .progress-bar-custom {
+      height: 10px;
+      border-radius: 5px;
+      transition: width 0.5s ease;
+    }
+    .result-card {
+      display: none;
+      padding: 30px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .result-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    .answer-option {
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .answer-option:hover {
+      background: rgba(0, 123, 255, 0.1);
+      border-color: #0d6efd;
+    }
+    .answer-option.selected {
+      background: rgba(0, 123, 255, 0.2);
+      border-color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="../home_page.html">
+        <img src="../assets/2.jpg" alt="logo" height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../home_page.html">الرئيسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="test.html">اختبار الصحة النفسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="resources.html">المصادر</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="story.html">قصص الطلاب</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <h1 class="text-center mb-4">🧠 اختبار الصحة النفسية للطلاب</h1>
+    <p class="text-center mb-5">أجب عن الأسئلة التالية بصدق لتتعرف على حالتك النفسية الحالية</p>
+
+    <!-- Progress Bar -->
+    <div class="progress mb-4" style="height: 10px;">
+      <div class="progress-bar progress-bar-custom bg-primary" role="progressbar" style="width: 0%"></div>
+    </div>
+
+    <!-- Questions Form -->
+    <form id="mentalHealthForm">
+      <div id="questionsContainer"></div>
+      
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary btn-lg px-5" disabled id="submitBtn">عرض النتيجة</button>
+      </div>
+    </form>
+
+    <!-- Results Cards -->
+    <div id="lowStressResult" class="result-card text-center mt-4">
+      <div class="result-icon">😊</div>
+      <h3 class="text-success">مستوى التوتر منخفض</h3>
+      <p class="lead">أنت تتمتع بصحة نفسية جيدة! استمر في ممارساتك الإيجابية.</p>
+      <div class="recommendations mt-4">
+        <h4>توصيات للحفاظ على صحتك النفسية:</h4>
+        <ul class="list-unstyled">
+          <li>✓ واصل ممارسة الرياضة بانتظام</li>
+          <li>✓ حافظ على نمط نومك الصحي</li>
+          <li>✓ استمر في التواصل مع أصدقائك</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="mediumStressResult" class="result-card text-center mt-4">
+      <div class="result-icon">😐</div>
+      <h3 class="text-warning">مستوى التوتر متوسط</h3>
+      <p class="lead">لديك بعض علامات التوتر. يمكنك تحسين صحتك النفسية باتباع بعض الخطوات.</p>
+      <div class="recommendations mt-4">
+        <h4>توصيات لتحسين صحتك النفسية:</h4>
+        <ul class="list-unstyled">
+          <li>✓ جرب تمارين التنفس العميق</li>
+          <li>✓ خذ فترات راحة منتظمة</li>
+          <li>✓ تحدث مع شخص تثق به</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="highStressResult" class="result-card text-center mt-4">
+      <div class="result-icon">😟</div>
+      <h3 class="text-danger">مستوى التوتر مرتفع</h3>
+      <p class="lead">أنت تعاني من مستوى عالٍ من التوتر. نوصي بطلب المساعدة المهنية.</p>
+      <div class="recommendations mt-4">
+        <h4>توصيات عاجلة:</h4>
+        <ul class="list-unstyled">
+          <li>✓ تواصل مع المرشد النفسي في الجامعة</li>
+          <li>✓ شارك مشاعرك مع عائلتك</li>
+          <li>✓ قلل من الضغط الدراسي</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    const questions = [
+      {
+        text: "كم مرة تشعر بالإرهاق بسبب الدراسة؟",
+        options: ["نادراً", "أحياناً", "كثيراً"]
+      },
+      {
+        text: "هل تواجه صعوبة في النوم بسبب التفكير في الدراسة؟",
+        options: ["نادراً", "أحياناً", "كثيراً"]
+      },
+      {
+        text: "هل تشعر بالقلق من الامتحانات قبل موعدها بفترة طويلة؟",
+        options: ["نادراً", "أحياناً", "كثيراً"]
+      },
+      {
+        text: "هل تجد صعوبة في التركيز أثناء المحاضرات؟",
+        options: ["نادراً", "أحياناً", "كثيراً"]
+      },
+      {
+        text: "هل تشعر بالوحدة في الجامعة؟",
+        options: ["نادراً", "أحياناً", "كثيراً"]
+      }
+    ];
+
+    const questionsContainer = document.getElementById('questionsContainer');
+    const progressBar = document.querySelector('.progress-bar');
+    const submitButton = document.getElementById('submitBtn');
+    let answeredQuestions = 0;
+
+    // Create questions
+    questions.forEach((question, index) => {
+      const questionCard = document.createElement('div');
+      questionCard.className = 'question-card';
+      questionCard.innerHTML = `
+        <h5 class="mb-3">${index + 1}. ${question.text}</h5>
+        <div class="options">
+          ${question.options.map((option, i) => `
+            <div class="answer-option mb-2" data-question="${index}" data-value="${i}">
+              ${option}
+            </div>
+          `).join('')}
+        </div>
+      `;
+      questionsContainer.appendChild(questionCard);
+    });
+
+    // Handle option selection
+    document.querySelectorAll('.answer-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const questionIndex = this.dataset.question;
+        const siblings = document.querySelectorAll(`[data-question="${questionIndex}"]`);
+        siblings.forEach(sib => sib.classList.remove('selected'));
+        this.classList.add('selected');
+        
+        // Update progress
+        const selectedOptions = document.querySelectorAll('.answer-option.selected');
+        answeredQuestions = selectedOptions.length;
+        const progress = (answeredQuestions / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        
+        // Enable submit button if all questions are answered
+        submitButton.disabled = answeredQuestions !== questions.length;
+      });
+    });
+
+    // Handle form submission
+    document.getElementById('mentalHealthForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Calculate score
+      const selectedOptions = document.querySelectorAll('.answer-option.selected');
+      let totalScore = 0;
+      selectedOptions.forEach(option => {
+        totalScore += parseInt(option.dataset.value);
+      });
+      
+      // Hide form
+      this.style.display = 'none';
+      
+      // Show appropriate result
+      const avgScore = totalScore / questions.length;
+      if (avgScore < 1) {
+        document.getElementById('lowStressResult').style.display = 'block';
+      } else if (avgScore < 2) {
+        document.getElementById('mediumStressResult').style.display = 'block';
+      } else {
+        document.getElementById('highStressResult').style.display = 'block';
+      }
+      
+      // Scroll to result
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

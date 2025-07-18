@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>قصص الطلاب - الصحة النفسية</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">تجارب وقصص الطلاب</h1>
+
+        <!-- Stories Section -->
+        <div class="row g-4">
+            <!-- Story 1 -->
+            <div class="col-md-6">
+                <div class="card story-card">
+                    <div class="card-body">
+                        <h5 class="card-title">كيف تغلبت على قلق الامتحانات</h5>
+                        <p class="text-muted">بقلم: أحمد - كلية الهندسة</p>
+                        <p class="card-text">كنت أعاني من قلق شديد قبل كل امتحان... [قصة كاملة]</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">نُشر قبل 3 أيام</small>
+                            <button class="btn btn-sm btn-outline-primary" onclick="toggleComments(1)">التعليقات (5)</button>
+                        </div>
+                        <div class="comments-section" id="comments-1" style="display: none;">
+                            <hr>
+                            <div class="comments">
+                                <!-- Comments will be loaded here -->
+                            </div>
+                            <form class="mt-3">
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="2" placeholder="اكتب تعليقك..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">إرسال</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Story 2 -->
+            <div class="col-md-6">
+                <div class="card story-card">
+                    <div class="card-body">
+                        <h5 class="card-title">رحلتي مع الوحدة في الجامعة</h5>
+                        <p class="text-muted">بقلم: سارة - كلية الطب</p>
+                        <p class="card-text">في السنة الأولى، شعرت بالوحدة الشديدة... [قصة كاملة]</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">نُشر قبل أسبوع</small>
+                            <button class="btn btn-sm btn-outline-primary" onclick="toggleComments(2)">التعليقات (3)</button>
+                        </div>
+                        <div class="comments-section" id="comments-2" style="display: none;">
+                            <hr>
+                            <div class="comments">
+                                <!-- Comments will be loaded here -->
+                            </div>
+                            <form class="mt-3">
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="2" placeholder="اكتب تعليقك..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm">إرسال</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Share Your Story Section -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">شارك قصتك</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form id="storyForm">
+                        <div class="mb-3">
+                            <label class="form-label">الاسم (اختياري)</label>
+                            <input type="text" class="form-control" placeholder="اسمك">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">الكلية</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">عنوان قصتك</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">اكتب قصتك</label>
+                            <textarea class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">نشر القصة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleComments(storyId) {
+            const commentsSection = document.getElementById(`comments-${storyId}`);
+            commentsSection.style.display = commentsSection.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.getElementById('storyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('شكراً لمشاركة قصتك! سيتم مراجعتها ونشرها قريباً.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
